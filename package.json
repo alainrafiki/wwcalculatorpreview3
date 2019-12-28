@@ -1,0 +1,36 @@
+{
+  "name": "turf_companion_app",
+  "version": "2.1.0",
+  "description": "Turf Companion App by Rafiki Technology",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mydeveloper1/wwcalculator.git"
+  },
+  "keywords": [
+    "Turf Companion App",
+    "Rafiki Technology"
+  ],
+  "author": "Rafiki Technology <@RafikiTechno> (https://rafikitechnology.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://twitter.com/rafikitechno"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-install": "^1.1.0",
+    "gulp-open": "^3.0.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4"
+  },
+  "homepage": "https://github.com/mydeveloper1/wwcalculator#readme",
+  "dependencies": {
+    "lodash.template": "^4.5.0",
+    "lodash.templatesettings": "^4.2.0"
+  }
+}

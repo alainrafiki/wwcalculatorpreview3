@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+    <!-- Material Kit CSS -->
+    <link rel="stylesheet" href="assets/css/material-kit.css?v=2.0.6" />
+    <link rel="stylesheet" href="assets/css/customstyles.css" />
+    <!--Favicons-->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>Turf Companion App</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" color-on-scroll="100">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="index.html">
+                    Turf Companion App </a>
+                <!-- This button is for mobile devices -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="compute.html" class="nav-link">
+                            <i class="fa fa-cog"></i> Compute</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://rafikitechnology.com" class="nav-link">
+                            <i class="fa fa-newspaper-o" aria-hidden="true"></i> RT Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main" data-parallax="true">
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <div class="title text-center">
+                            <h3>Treatment Calculation</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-8 ml-auto mr-auto">
+                    <p>Please select a GPA,
+                        enter the number of gallons you have, the number of
+                        gallons you need or enter the acrage you are about to work on, then
+                        pick a treatment to see the results.</p>
+                    <div>
+                        <div class="row">
+                            <div class="col-md-12 bmd-form-group">
+                                <label for="selectGPA">Select Number of Gallons Per Acre</label>
+                                <select id="selectGPA" class="form-control selectpicker"
+                                    onchange="chosenGPA.call(this, event)">
+                                    <option selected>Choose GPA...</option>
+                                    <option value="87.6">87.6 GPA</option>
+                                    <option value="100">100 GPA</option>
+                                    <option value="Other GPA">Other GPA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" id="otherGPADiv" style="display:none">
+                            <div class="col-md-12 bmd-form-group">
+                                <p>Enter Other GPA</p>
+                                <input type="number" class="form-control" id="inputOtherGPA"
+                                    placeholder="Between 0 and 290" min="0" max="290" 
+                                    onchange="whenOtherGPA()"/>
+                            </div>
+                        </div>
+                        <div class="row" id="gallonsIHaveDiv" style="display: none">
+                            <div class="col-md-12 bmd-form-group">
+                                <p class="label">Enter number of Gallons of chemicals you
+                                    have</p>
+
+                                <input type="number" class="form-control" id="inputGallonsIHave"
+                                    placeholder="0 through 290" min="0" max="290"
+                                    onchange="validateGallonsIHaveInput()" />
+
+                                <div>
+                                    <p id="valueofBtoUse"></p>
+                                    <p id="valueOfBIsOutOfRange"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="enterSquareFootageDiv" style="display: none">
+                            <div class="col-md-12 bmd-form-group">
+                                <p class="label">Enter square footage</p>
+                                <input type="number" class="form-control" id="inputSquareFootage"
+                                    placeholder="Number of sqft" min="5000" max="155000"
+                                    onchange="validateSquareFootageInput()" />
+
+                                <div>
+                                    <p id="valueOfSqFt"></p>
+                                    <p id="valueOfSqFtIsOutOfRange"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="gallonsYouNeedDiv" style="display: none">
+                            <div class="col-md-12 bmd-form-group">
+                                <p>The number of gallons you need is:</p>
+                                <div>
+                                    <p id="autofillGallonsINeed"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 bmd-form-group">
+                                <p>Does the number of gallons you need look accurate?</p>
+                                <div>
+                                    <div>
+                                        <input type="radio" id="verifyanswerGallonsINeedYES"
+                                            name="verifyanswerGallonsINeedname" value="yes" onchange="computeGallonsToMix();
+                                            computeAcresYouAreFillingUpFor()">
+                                        <label for="verifyanswer1YES">Yes. Show me what's next.</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="verifyanswerGallonsINeedNO"
+                                            name="verifyanswerGallonsINeedname" 
+                                            value="no" 
+                                            onchange="reloadPage()">
+                                        <label for="verifyanswer1NO">No. Start Over.</label>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row" id="GallonsToMixDiv" style="display: none">
+                            <div class="col-md-12 bmd-form-group">
+                                <div>The Number of Gallons to MIX for:</div>
+                                <div id="outputForNumberOfGallonsToMixFor"></div>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <div class="row" id="acresYouAreMixingUpForDiv" style="display: none">
+                            <div class="col-md-12 bmd-form-group">
+                                <div>Number of Acres You Are MIXING Up For</div>
+
+                                <p id="outputAcresYouAreMixingUpFor"></p>
+                            </div>
+
+                            <div class="col-md-12 bmd-form-group">
+                                <div>
+                                    <p>Does this look accurate?</p>
+                                    <div>
+                                        <input type="radio" id="fillingUpForYes" name="varifyFillingUpFor" value="yes"
+                                            onchange="revealNextStep('#treatmentSelectionDiv')">
+                                        <label for="verifyanswer1YES">Yes. Show me what's next.</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="fillingUpForNo" name="varifyFillingUpFor" value="no"
+                                            onchange="reloadPage()">
+                                        <label for="verifyanswer1NO">No. Start over.</label>
+                                        <!-- <p id="ifGallonsINeedNotAccurate"></p> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <div class="row" id="treatmentSelectionDiv" style="display: none">
+                            <div class="col-md-12 bmd-form-group">
+                                <label for="selectTreatment">Select Treatment</label>
+                                <select id="selectTreatment" class="form-control selectpicker"
+                                    onchange="chosenTreatment.call(this, event)">
+                                    <optgroup label="">
+                                        <option value="Pick one..." selected>Pick one...</option>
+                                    </optgroup>
+                                    <optgroup label="Set 1">
+                                        <option value="Bermuda 1PPE">Bermuda 1PPE</option>
+                                        <option value="CSA 1PPE">CSA 1PPE</option>
+                                        <option value="1PPE">1PPE</option>
+                                    </optgroup>
+                                    <optgroup label="Set 2">
+                                        <option value="Burmuda 2PPE">Burmuda 2PPE</option>
+                                        <option value="CSA 2PPE">CSA 2PPE</option>
+                                        <option value="2PPE">2PPE</option>
+                                    </optgroup>
+                                    <optgroup label="Set 3">
+                                        <option value="Berm SW">Berm SW</option>
+                                        <option value="General SW">General SW</option>
+                                        <option value="SW Main">SW Main</option>
+                                    </optgroup>
+                                    <optgroup label="Set 4">
+                                        <option value="FW Sept">FW Sept</option>
+                                        <option value="FW Oct">FW Oct</option>
+                                        <option value="FW Oct Specticle">FW Oct Specticle</option>
+                                        <option value="FW Sept Specticle">FW Sept Specticle</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <!--This following div for final results need to be triggered 
+                        by the last function called to display final results-->
+                    <div class="card" style="display: none" id="finalResultsGoHere">
+                        <div class="col-sm-12 col-md-8 ml-auto mr-auto card-title"> 
+                            &nbsp;&nbsp;&nbsp; 
+                            Your formula for the day:*</div>
+                        <div class="col-sm-12 col-md-8 ml-auto mr-auto card-body">
+                            <p id="displayOutputHere"></p>
+                            <p id="resultTimeStamp"></p>
+                        </div>
+                        <div class="col-sm-12 col-md-8 ml-auto mr-auto card-footer">
+                            <div>
+                                <p>Something wrong?</p>
+                                <button type="reset" name="reloadPage" class="confirmation" 
+                                aria-label="Reload the page" 
+                                onclick="reloadPage()">Start Over</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <footer>
+        <div class="footer footer-default col-md-12">
+            <div class="container">
+                <div class="copyright">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> Turf Companion App made with <i class="material-icons">favorite</i> by
+                    <a href="https://www.rafikitechnology.com/" target="blank">RafikiTechnology.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Our main Javascript Is Linked Below-->
+    <script src="assets/js/index.js" type="text/javascript"></script>
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="assets/js/plugins/moment.min.js"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!--  Google Maps Plugin will go here -->
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+    <script src="assets/js/material-kit.js?v=2.0.6" type="text/javascript"></script>
+</body>
+
+</html>

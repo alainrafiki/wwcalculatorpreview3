@@ -25,7 +25,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-install": "^1.1.0",
     "gulp-open": "^3.0.1",
-    "gulp-sass": "^4.0.1",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^2.6.4"
   },
   "homepage": "https://github.com/mydeveloper1/wwcalculator#readme",

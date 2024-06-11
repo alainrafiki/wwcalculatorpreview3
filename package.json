@@ -20,7 +20,7 @@
     "url": "https://twitter.com/rafikitechno"
   },
   "devDependencies": {
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-install": "^1.1.0",

@@ -517,9 +517,11 @@
       template = template.replace('{total}', total);
       $(this.element).html(template);
     } else { //template by defaults
+      var safeTotal = escapeHtml(total);
+      var safeTitle = escapeHtml(this.options.title);
       $(this.element).html(
-        '<div class="box"><a class="count" href="#">' + total + '</a>' +
-        (this.options.title !== '' ? '<a class="share" href="#">' + this.options.title + '</a>' : '') +
+        '<div class="box"><a class="count" href="#">' + safeTotal + '</a>' +
+        (this.options.title !== '' ? '<a class="share" href="#">' + safeTitle + '</a>' : '') +
         '</div>'
       );
     }
@@ -535,6 +537,16 @@
     }
     return num;
   };
+
+  // Simple HTML escaping helper to avoid XSS when inserting dynamic text into HTML.
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
 
   /* Methode for open popup
   ================================================== */

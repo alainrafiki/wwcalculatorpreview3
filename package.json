@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/mydeveloper1/wwcalculator#readme",
   "dependencies": {
-    "lodash.template": "^4.5.0",
+    "lodash.template": "^4.18.1",
     "lodash.templatesettings": "^4.2.0"
   }
 }
